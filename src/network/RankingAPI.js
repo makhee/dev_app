@@ -1,7 +1,10 @@
 /**
  * RankingView API
  */
-var url_get_list = 'http://m.netpx.co.kr/app/api/ranking/get_list';
+
+let host = 'http://m.netpx.co.kr';
+
+var url_get_list = host + '/app/api/ranking/get_list';
 
 function fetchGetList() {
     return fetch(url_get_list)
