@@ -53,7 +53,6 @@ const styles = StyleSheet.create({
   }
 });
 
-
 const listData = [
                   {brand:'엘리트서바이벌1', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg' },
                   {brand:'엘리트서바이벌2', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},

@@ -40,7 +40,7 @@ class MainHeader extends React.Component {
           placement = "left"
           leftComponent={{ icon: 'menu', color: '#fff' }}
           centerComponent={<Image
-                              source={require('../img/logo/img_logo.png')}
+                              source={require('../../img/logo/img_logo.png')}
                               style={{ width: 100, height: 24}}
                             />                      
           }

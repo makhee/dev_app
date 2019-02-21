@@ -7,99 +7,174 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {Component} from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, ScrollView } from 'react-native';
+import React, { Component } from 'react';
+import { Dimensions, StyleSheet, Text, View, TouchableHighlight, ScrollView } from 'react-native';
 import { Button, Image, ListItem, Header, SearchBar } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import NetpxHeader from './src/components/MainHeader';
-import MainBoxMenu from './src/components/MainBoxMenu';
-import MainProductList from './src/components/MainProductList';
-import BannerSwiper from './src/components/BannerSwiper';
-import SplashScreen from 'react-native-splash-screen';
 import Swiper from 'react-native-swiper';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+
+import MainHeader from './src/components/main/MainHeader';
+
+import MainView from './src/views/MainView';
+import RankingView from './src/views/RankingView';
+
+import MainProductList from './src/components/MainProductList';
+import SplashScreen from 'react-native-splash-screen';
+
 // import { SlidingPane, SlidingPaneWrapper } from 'react-native-sliding-panes';
+
 
 export default class App extends React.Component {
 
   componentDidMount() {
-  	// do stuff while splash screen is shown
-      // After having done stuff (such as async tasks) hide the splash screen
-      SplashScreen.hide();
+    // do stuff while splash screen is shown
+    // After having done stuff (such as async tasks) hide the splash screen
+    SplashScreen.hide();
   }
-  
+
+  /**
+   * state for Tab (key: String, title: String)
+   */
+  state = {
+    index: 0,
+    routes: [
+      { key: '0', title: "홈" },
+      { key: '1', title: "신상품" },
+      { key: '2', title: "랭킹샵" },
+      { key: '3', title: "세일샵" },
+      { key: '4', title: "후기" },
+    ],
+  };
+
+  /**
+   * render
+   */
   render() {
 
     let renderNavBarButton = (text, additional_styles, idx) => {
-      return  <TouchableHighlight style={ [styles.navLink, additional_styles] }
-                                  onPress={() => { this.Swiper.scrollBy(idx) }}>
-                <View style={ { flexDirection: 'row' } }>
-                  <Text style={styles.navLinkText}>{text}</Text>
-                </View>
-              </TouchableHighlight>
+      return <TouchableHighlight style={[styles.navLink, additional_styles]}
+        onPress={() => { this.Swiper.scrollBy(idx) }}>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={styles.navLinkText}>{text}</Text>
+        </View>
+      </TouchableHighlight>
     };
 
     return (
-        <View style={styles.container}>
-          <ScrollView
-            contentContainerStyle={{
-            flexGrow: 1,
-            flexDirection: 'column',
-          }}>
-          <NetpxHeader/>
-          <View style={{ width: '100%' }}>
-              <View style={styles.navBarBuffer} />
-              <View style={styles.navBar}>
-                { renderNavBarButton('홈', { borderRightColor: '#ececec', borderRightWidth: 1 }, 0) }
-                { renderNavBarButton('신상품', { borderRightColor: '#ececec', borderRightWidth: 1 }, 1) }
-                { renderNavBarButton('랭킹샵', { borderRightColor: '#ececec', borderRightWidth: 1 }, 2) }
-                { renderNavBarButton('세일샵', { borderRightColor: '#ececec', borderRightWidth: 1 }, 3) }
-                { renderNavBarButton('구매후기', { }, 4) }
-              </View>
-          </View>
-          <Swiper containerStyle={{ height: 1600 }} ref={(Swiper) => { this.Swiper = Swiper }}
-            showsButtons={false}
-            loop={false}
-            showsPagination={false}>
-            <View>
-              <BannerSwiper/>
-              <MainBoxMenu/>
-              <MainProductList/>
-            </View>
-            <View>
-              <MainProductList/>
-            </View>
-            <View>
-              <MainProductList/>
-            </View>
-            <View>
-              <MainProductList/>
-            </View>
-            <View>
-              <MainProductList/>
-            </View>
-          </Swiper>
-          </ScrollView>
-        </View>
+      <View style={styles.container}>
+        <MainHeader />
+
+        <TabView
+          navigationState={this.state}
+          renderScene={SceneMap({
+            '0': HomeTab,
+            '1': NewTab,
+            '2': RankingTab,
+            '3': SaleTab,
+            '4': ReviewTab
+          })}
+          onIndexChange={index => this.setState({ index })}
+          initialLayout={{ width: Dimensions.get('window').width }}
+        />
+
+      </View>
+
     );
+
+    /**
+     * makhee original return
+     */
+    //   return (
+    //     <View style={styles.container}>
+    //       <ScrollView
+    //         contentContainerStyle={{
+    //           flexGrow: 1,
+    //           flexDirection: 'column',
+    //         }}>
+    //         <MainHeader />
+    //         <View style={{ width: '100%' }}>
+    //           <View style={styles.navBarBuffer} />
+    //           <View style={styles.navBar}>
+    //             {renderNavBarButton('홈', { borderRightColor: '#ececec', borderRightWidth: 1 }, 0)}
+    //             {renderNavBarButton('신상품', { borderRightColor: '#ececec', borderRightWidth: 1 }, 1)}
+    //             {renderNavBarButton('랭킹샵', { borderRightColor: '#ececec', borderRightWidth: 1 }, 2)}
+    //             {renderNavBarButton('세일샵', { borderRightColor: '#ececec', borderRightWidth: 1 }, 3)}
+    //             {renderNavBarButton('구매후기', {}, 4)}
+    //           </View>
+    //         </View>
+    //         <Swiper containerStyle={{ flex: 1 }} ref={(Swiper) => { this.Swiper = Swiper }}
+    //           showsButtons={false}
+    //           loop={false}
+    //           showsPagination={false}>
+    //           <View>
+    //             <BannerSwiper />
+    //             <MainBoxMenu />
+    //             <MainProductList />
+    //           </View>
+    //           <View>
+    //             <MainProductList />
+    //           </View>
+    //           <View>
+    //             <RankingView />
+    //           </View>
+    //           <View>
+    //             <MainProductList />
+    //           </View>
+    //           <View>
+    //             <MainProductList />
+    //           </View>
+    //         </Swiper>
+    //       </ScrollView>
+    //     </View>
+    //   );
   }
 }
 
+
+/**
+ * Tab
+ */
+const HomeTab = () => (
+  <View style={styles.scene}>
+    <MainView />
+  </View>
+);
+const NewTab = () => (
+  <View style={styles.scene}>
+  </View>
+);
+const RankingTab = () => (
+  <View style={styles.scene}>
+    <RankingView />
+  </View>
+);
+const SaleTab = () => (
+  <View style={styles.scene}>
+  </View>
+);
+const ReviewTab = () => (
+  <View style={styles.scene}>
+  </View>
+);
+
+/**
+ * StyleSheet
+ */
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#fff'
+    flex: 1
   },
-  navBarBuffer: {
-    height: 0,
-    backgroundColor: '#000'
+  scene: {
+    flex: 1,
+    backgroundColor: 'ffffff'
   },
   navBar: {
     height: 40,
     backgroundColor: '#fff',
     width: '100%',
     flexDirection: 'row',
-    borderBottomColor: '#ececec', 
+    borderBottomColor: '#ececec',
     borderBottomWidth: 1
   },
   navLink: {
@@ -109,53 +184,11 @@ const styles = StyleSheet.create({
   navLinkText: {
     paddingTop: 10,
     paddingBottom: 10,
-    color:'#000'
+    color: '#000'
   },
   paneText: {
     fontSize: 22,
     color: '#000'
   }
+
 });
-
-
-// import React, { Component } from 'react';
-// import { Text, View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-// // import { Constants } from 'expo';
-
-// export default class App extends Component {
-  
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       height: 100,
-//     };
-//   }
-  
-//   render() {
-//     return (
-//       <View style={styles.root}>
-//         <ScrollView contentContainerStyle={{ flexGrow: 1, borderColor: 'green' }}>
-//           <View style={styles.box1} />
-//           <View style={styles.box2} />
-//           <View style={styles.box1} />
-//         </ScrollView>
-//       </View>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   root: {
-//     flex: 1,
-//     flexDirection: 'column',
-//     backgroundColor: '#fff',
-//   },
-//   box1: {
-//     height: 500,
-//     backgroundColor: 'blue'
-//   },
-//   box2: {
-//     height: 500,
-//     backgroundColor: 'purple'
-//   }
-// });

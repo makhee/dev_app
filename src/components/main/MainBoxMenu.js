@@ -43,7 +43,7 @@ class MainBoxMenu extends React.Component {
           <View style={ styles.listWrap }>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu01.png')}
+                    source={require('../../img/boxMenu/s_menu01.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />
@@ -51,7 +51,7 @@ class MainBoxMenu extends React.Component {
             </View>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu02.png')}
+                    source={require('../../img/boxMenu/s_menu02.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />
@@ -59,7 +59,7 @@ class MainBoxMenu extends React.Component {
             </View>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu03.png')}
+                    source={require('../../img/boxMenu/s_menu03.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />
@@ -67,7 +67,7 @@ class MainBoxMenu extends React.Component {
             </View>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu04.png')}
+                    source={require('../../img/boxMenu/s_menu04.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />
@@ -75,7 +75,7 @@ class MainBoxMenu extends React.Component {
             </View>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu05.png')}
+                    source={require('../../img/boxMenu/s_menu05.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />
@@ -83,7 +83,7 @@ class MainBoxMenu extends React.Component {
             </View>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu06.png')}
+                    source={require('../../img/boxMenu/s_menu06.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />
@@ -91,7 +91,7 @@ class MainBoxMenu extends React.Component {
             </View>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu07.png')}
+                    source={require('../../img/boxMenu/s_menu07.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />
@@ -99,7 +99,7 @@ class MainBoxMenu extends React.Component {
             </View>
             <View style={styles.itemWrap}>
                 <Image 
-                    source={require('../img/boxMenu/s_menu08.png')}
+                    source={require('../../img/boxMenu/s_menu08.png')}
                     style={ styles.listImage }
                     resizeMode='contain'
                 />

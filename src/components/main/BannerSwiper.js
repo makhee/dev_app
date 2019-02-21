@@ -35,14 +35,14 @@ class BannerSwiper extends React.Component {
         paginationStyle={{bottom:0}}>
         <View style={styles.slide1}>
             <Image
-                source={require('../img/banner/netpx_banner_01.png')}
+                source={require('../../img/banner/netpx_banner_01.png')}
                 style={{ width:windowWidth }}
                 resizeMode='contain'
             /> 
         </View>
         <View style={styles.slide2}>
             <Image
-                source={require('../img/banner/netpx_banner_02.png')}
+                source={require('../../img/banner/netpx_banner_02.png')}
                 style={{ width:windowWidth }}
                 resizeMode='contain'
             /> 
