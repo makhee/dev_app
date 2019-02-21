@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
       borderTopWidth: 0
     },
     listText: {
-        paddingTop: 5,
-        color: '#000'
+      paddingTop: 5,
+      color: '#000'
     },
     listImage: {
-        height:40,
+      height:40,
     }
 });
 
