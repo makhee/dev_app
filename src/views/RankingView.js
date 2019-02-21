@@ -44,7 +44,7 @@ class RankingView extends React.Component {
       .done();
   }
 
-  /**ㅔ
+  /**
    * render
    */
   _renderItem = ({ item }) => (
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   item: {
     paddingTop: 20,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#fff'
   }
 });
 
