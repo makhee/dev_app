@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import BannerSwiper from '../components/main/BannerSwiper';
 import MainBoxMenu from '../components/main/MainBoxMenu';
@@ -8,11 +8,11 @@ import MainProductList from '../components/MainProductList';
 class MainView extends React.Component {
     render() {
         return (
-            <View style={styles.container}>
+            <ScrollView>
                 <BannerSwiper />
                 <MainBoxMenu />
                 <MainProductList />
-            </View>
+            </ScrollView>
         );
     }
 }

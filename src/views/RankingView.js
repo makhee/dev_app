@@ -8,93 +8,59 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import PropTypes from 'prop-types';
 
-import Goods from "../components/common/Goods";
+import RankingGoodsList from "../components/ranking/RankingGoodsList"
+// import Goods from "../components/common/Goods";
+import RankingAPI from "../network/RankingAPI";
 
-var REQUEST_URL =
-  'http://m.netpx.co.kr/app/api/ranking/get_list';
-
-class RankingView extends React.Component {
+class RankingView extends Component {
 
   constructor(props) {
     super(props);
     
     this.state = {
-      data: null,
+      goods_list: null,
       loaded: false
-    };
+    }
   }
 
   componentDidMount() {
-    this.fetchData();
-  }
-
-  fetchData() {
-    fetch(REQUEST_URL)
-      .then((response) => response.json())
-      .then((responseJSON) => {
-        console.log("rakingview data: "+responseJSON.data);
-
+    RankingAPI.fetchGetList().then(data => {
         this.setState({
-          data: responseJSON.data.goods_list,
-          loaded: true
-        });
-      })
-      .done();
-  }
+            goods_list: data.goods_list,
+            loaded: true
+        })
+    });
+}
 
-  /**ㅔ
-   * render
-   */
-  _renderItem = ({ item }) => (
-    <Goods
-      reg_dm={item.reg_dm}
-      goods_no={item.goods_no}
-      goods_nm={item.goods_nm}
-      price={item.price}
-    />
-  );
-
+/**
+ * render
+ */
   render() {
-
-    if (!this.state.data) {
-      return this.renderLoadingView();
-    }
 
     return (
       <View style={styles.container}>
-      <FlatList
-        data={this.state.data}
-        renderItem={this._renderItem}
-        style={styles.listView}
-      />
+        <RankingGoodsList list={this.state.goods_list}/>
       </View>
     )
   }
-
-  renderLoadingView() {
-    return (
-      <View style={styles.container}>
-        <Text>
-          Loading goods...
-        </Text>
-      </View>
-    );
-  }
-
 }
 
+RankingGoodsList.propTypes = {
+  list: PropTypes.any.isRequired
+}
+
+/**
+ * StyleSheet
+ */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF'
-  },
-  item: {
-    paddingTop: 20,
-    backgroundColor: '#FFFFFF'
   }
 });
 

@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
   },
   scene: {
     flex: 1,
-    backgroundColor: 'ffffff'
+    backgroundColor: '#ffffff'
   },
   navBar: {
     height: 40,
