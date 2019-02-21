@@ -12,7 +12,7 @@ function fetchGetList() {
       .then(responseJSON => {
         
         var data = responseJSON.data
-        console.log('get_list() data: '+data);
+        console.log('RankingAPI fetchGetList() data: '+data);
 
         return {
             total_cnt: data.total_cnt,

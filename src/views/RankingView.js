@@ -1,19 +1,9 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- * @lint-ignore-every XPLATJSCOPYRIGHT1
- */
-
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import RankingGoodsList from "../components/ranking/RankingGoodsList"
-// import Goods from "../components/common/Goods";
-import RankingAPI from "../network/RankingAPI";
+import GoodsList from '../components/common/GoodsList';
+import RankingAPI from '../network/RankingAPI';
 
 class RankingView extends Component {
 
@@ -35,21 +25,18 @@ class RankingView extends Component {
     });
 }
 
-/**
- * render
- */
+/** render */
   render() {
-
     return (
       <View style={styles.container}>
-        <RankingGoodsList list={this.state.goods_list}/>
+        <GoodsList goods_list={this.state.goods_list}/>
       </View>
     )
   }
 }
 
-RankingGoodsList.propTypes = {
-  list: PropTypes.any.isRequired
+GoodsList.propTypes = {
+  goods_list: PropTypes.any.isRequired
 }
 
 /**
