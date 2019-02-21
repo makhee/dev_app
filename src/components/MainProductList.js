@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Dimensions } from 'react-native';
 import { Image } from 'react-native-elements';
 
+const numColumns = 2;
+const size = Dimensions.get('window').width/numColumns;
+
 const styles = StyleSheet.create({
-    mainProductList: {
-      // flex:2,
-      height: 200,
-      backgroundColor: '#fff'
-    },
     listWrap: {
       flex:1,
       flexDirection:'row',
@@ -50,7 +48,11 @@ const styles = StyleSheet.create({
       height:200,
       borderBottomWidth:1,
       borderColor: '#ececec'
-  }
+    },
+    itemContainer: {
+      width: size,
+      height: size,
+    }
 });
 
 const listData = [
@@ -65,45 +67,37 @@ const listData = [
                   {brand:'엘리트서바이벌9', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
                   {brand:'엘리트서바이벌10', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
                   {brand:'엘리트서바이벌11', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
+                  {brand:'엘리트서바이벌12', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
+                  {brand:'엘리트서바이벌7', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
+                  {brand:'엘리트서바이벌8', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
+                  {brand:'엘리트서바이벌9', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
+                  {brand:'엘리트서바이벌10', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
+                  {brand:'엘리트서바이벌11', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'},
                   {brand:'엘리트서바이벌12', name:'엘리트서바이벌 상품', price:'16000', img:'http://www.netpx.co.kr/images/goods_img/20171219/118833/118833_a_160.jpg'}
                 ];     
 
 class MainProductList extends React.Component {
-
-  renderButtons() {
-      return listData.map((item) => {
-          return (
-              <View style={styles.itemWrap} key={item}>
-                  <Image 
-                    source={{uri:item.img}}
-                    style={ styles.listImage }
-                    resizeMode='contain'
-                  />
-                  <Text style={styles.brandText}>{item.brand}</Text>
-                  <Text style={styles.nameText}>{item.name}</Text>
-                  <Text style={styles.priceText}>{item.price}</Text>
-              </View>
-          );
-      });
-  }
-
+    
   render() {
-
     return (
-        <View style={ styles.mainProductList }>
-          <View style= { styles.listTitleWrap }>
-            <Image
-              source={require('../img/title/title_mdpick.png')}
-              style={ styles.listTitle }
-            /> 
-          </View>
-          <View style={ styles.listWrap }>
-            {this.renderButtons()}
-          </View>
-      </View>
-    );
-
-  }
+      <FlatList
+      data={listData}
+      renderItem={({item}) => (
+        <View style={styles.itemWrap}>
+          <Image 
+            source={{uri:item.img}}
+            style={ styles.listImage }
+            resizeMode='contain'
+          />
+          <Text style={styles.brandText}>{item.brand}</Text>
+          <Text style={styles.nameText}>{item.name}</Text>
+          <Text style={styles.priceText}>{item.price}원</Text>
+        </View>
+      )}
+      keyExtractor={item => item.brand}
+      numColumns={numColumns} />
+    )
+  }   
 }
 
 export default MainProductList;

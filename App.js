@@ -64,7 +64,6 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <MainHeader />
-
         <TabView
           navigationState={this.state}
           renderScene={SceneMap({
@@ -77,57 +76,8 @@ export default class App extends React.Component {
           onIndexChange={index => this.setState({ index })}
           initialLayout={{ width: Dimensions.get('window').width }}
         />
-
       </View>
-
     );
-
-    /**
-     * makhee original return
-     */
-    //   return (
-    //     <View style={styles.container}>
-    //       <ScrollView
-    //         contentContainerStyle={{
-    //           flexGrow: 1,
-    //           flexDirection: 'column',
-    //         }}>
-    //         <MainHeader />
-    //         <View style={{ width: '100%' }}>
-    //           <View style={styles.navBarBuffer} />
-    //           <View style={styles.navBar}>
-    //             {renderNavBarButton('홈', { borderRightColor: '#ececec', borderRightWidth: 1 }, 0)}
-    //             {renderNavBarButton('신상품', { borderRightColor: '#ececec', borderRightWidth: 1 }, 1)}
-    //             {renderNavBarButton('랭킹샵', { borderRightColor: '#ececec', borderRightWidth: 1 }, 2)}
-    //             {renderNavBarButton('세일샵', { borderRightColor: '#ececec', borderRightWidth: 1 }, 3)}
-    //             {renderNavBarButton('구매후기', {}, 4)}
-    //           </View>
-    //         </View>
-    //         <Swiper containerStyle={{ flex: 1 }} ref={(Swiper) => { this.Swiper = Swiper }}
-    //           showsButtons={false}
-    //           loop={false}
-    //           showsPagination={false}>
-    //           <View>
-    //             <BannerSwiper />
-    //             <MainBoxMenu />
-    //             <MainProductList />
-    //           </View>
-    //           <View>
-    //             <MainProductList />
-    //           </View>
-    //           <View>
-    //             <RankingView />
-    //           </View>
-    //           <View>
-    //             <MainProductList />
-    //           </View>
-    //           <View>
-    //             <MainProductList />
-    //           </View>
-    //         </Swiper>
-    //       </ScrollView>
-    //     </View>
-    //   );
   }
 }
 
