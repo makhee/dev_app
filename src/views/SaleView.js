@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import GoodsList from '../components/common/GoodsList';
-import RankingAPI from '../network/RankingAPI';
+import SaleAPI from '../network/SaleAPI';
 
 class RankingView extends Component {
 
@@ -17,7 +17,7 @@ class RankingView extends Component {
   }
 
   componentDidMount() {
-    RankingAPI.fetchGetList().then(data => {
+    SaleAPI.fetchGetList().then(data => {
         this.setState({
             goods_list: data.goods_list,
             loaded: true
@@ -33,6 +33,10 @@ class RankingView extends Component {
       </View>
     )
   }
+}
+
+GoodsList.propTypes = {
+  goods_list: PropTypes.any.isRequired
 }
 
 /**
