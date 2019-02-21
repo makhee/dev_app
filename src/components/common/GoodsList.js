@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Dimensions, StyleSheet, Text, View, FlatList } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Goods from "./Goods";
 
@@ -53,6 +54,10 @@ class GoodsList extends Component {
             </View>
         );
     }
+}
+
+GoodsList.propTypes = {
+  goods_list: PropTypes.any.isRequired
 }
 
 /**

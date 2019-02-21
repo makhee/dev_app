@@ -35,10 +35,6 @@ class RankingView extends Component {
   }
 }
 
-GoodsList.propTypes = {
-  goods_list: PropTypes.any.isRequired
-}
-
 /**
  * StyleSheet
  */
