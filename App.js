@@ -14,16 +14,12 @@ import Swiper from 'react-native-swiper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
 
-import MainHeader from './src/components/main/MainHeader';
-
-import MainView from './src/views/MainView';
-import RankingView from './src/views/RankingView';
-
-import MainProductList from './src/components/MainProductList';
 import SplashScreen from 'react-native-splash-screen';
 
-// import { SlidingPane, SlidingPaneWrapper } from 'react-native-sliding-panes';
-
+import MainHeader from './src/components/main/MainHeader';
+import MainView from './src/views/MainView';
+import RankingView from './src/views/RankingView';
+import SaleView from './src/views/SaleView';
 
 export default class App extends React.Component {
 
@@ -39,17 +35,15 @@ export default class App extends React.Component {
   state = {
     index: 0,
     routes: [
-      { key: '0', title: "홈" },
-      { key: '1', title: "신상품" },
-      { key: '2', title: "랭킹샵" },
-      { key: '3', title: "세일샵" },
-      { key: '4', title: "후기" },
+      { key: '0', title: '홈' },
+      { key: '1', title: '신상품' },
+      { key: '2', title: '랭킹샵' },
+      { key: '3', title: '세일샵' },
+      { key: '4', title: '후기' },
     ],
   };
 
-  /**
-   * render
-   */
+  /** render */
   render() {
 
     let renderNavBarButton = (text, additional_styles, idx) => {
@@ -81,30 +75,30 @@ export default class App extends React.Component {
   }
 }
 
-
 /**
  * Tab
  */
 const HomeTab = () => (
-  <View style={styles.scene}>
+  <View style={styles.container}>
     <MainView />
   </View>
 );
 const NewTab = () => (
-  <View style={styles.scene}>
+  <View style={styles.container}>
   </View>
 );
 const RankingTab = () => (
-  <View style={styles.scene}>
+  <View style={styles.container}>
     <RankingView />
   </View>
 );
 const SaleTab = () => (
-  <View style={styles.scene}>
+  <View style={styles.container}>
+    <SaleView />
   </View>
 );
 const ReviewTab = () => (
-  <View style={styles.scene}>
+  <View style={styles.container}>
   </View>
 );
 
@@ -113,19 +107,8 @@ const ReviewTab = () => (
  */
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  },
-  scene: {
     flex: 1,
     backgroundColor: '#ffffff'
-  },
-  navBar: {
-    height: 40,
-    backgroundColor: '#fff',
-    width: '100%',
-    flexDirection: 'row',
-    borderBottomColor: '#ececec',
-    borderBottomWidth: 1
   },
   navLink: {
     flex: 1,
@@ -135,10 +118,5 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     color: '#000'
-  },
-  paneText: {
-    fontSize: 22,
-    color: '#000'
   }
-
 });
