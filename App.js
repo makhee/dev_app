@@ -69,7 +69,7 @@ export default class App extends React.Component {
             '4': ReviewTab
           })}
           onIndexChange={index => this.setState({ index })}
-          initialLayout={{ width: Dimensions.get('window').width }}
+          initialLayout={{ width: Dimensions.get('window').width, height: Dimensions.get('window').height }}
           renderTabBar={props =>
             <TabBar
               {...props}
