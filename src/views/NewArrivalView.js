@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import GoodsList from '../components/common/GoodsList';
-import SaleAPI from '../network/SaleAPI';
+import NewArrivalAPI from '../network/NewArrivalAPI';
 
-class SaleView extends Component {
+class NewArrivalView extends Component {
 
   constructor(props) {
     super(props);
@@ -17,7 +17,7 @@ class SaleView extends Component {
   }
 
   componentDidMount() {
-    SaleAPI.fetchGetList().then(data => {
+    NewArrivalAPI.fetchGetList().then(data => {
         this.setState({
             goods_list: data.goods_list,
             loaded: true
@@ -51,4 +51,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SaleView;
+export default NewArrivalView;
