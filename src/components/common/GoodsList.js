@@ -40,6 +40,7 @@ class GoodsList extends Component {
             <FlatList
                 data={this.props.goods_list}
                 renderItem={this._renderItem}
+                keyExtractor={this._keyExtractor}
                 numColumns={numColumns}
             />
         )
