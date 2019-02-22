@@ -39,8 +39,8 @@ const styles = StyleSheet.create({
         margin: '1%',
         padding: 10,
         fontSize: 18,
-        height: 300,
-        alignItems: "center",
+        height: 320,
+        alignItems: 'center',
         backgroundColor: '#fff',
         borderWidth: 1,
         borderColor: '#ececec',
@@ -52,13 +52,16 @@ const styles = StyleSheet.create({
         borderColor: '#ECECEC'
     },
     brandText: {
+        flex:1,
         color: 'green',
-        fontSize: 20,
+        fontSize: 15,
     },
     nameText: {
+        flex:2,
         color: '#000000'
     },
     priceText: {
+        flex:1,
         color: '#000000',
         fontWeight: 'bold'
     },
