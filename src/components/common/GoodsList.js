@@ -58,7 +58,7 @@ class GoodsList extends Component {
 }
 
 GoodsList.propTypes = {
-  goods_list: PropTypes.any.isRequired
+  goods_list: PropTypes.any
 }
 
 /**
