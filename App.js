@@ -70,6 +70,12 @@ export default class App extends React.Component {
           })}
           onIndexChange={index => this.setState({ index })}
           initialLayout={{ width: Dimensions.get('window').width }}
+          renderTabBar={props =>
+            <TabBar
+              {...props}
+              tabStyle={{ backgroundColor: 'green' }}
+            />
+          }
         />
       </View>
     );
