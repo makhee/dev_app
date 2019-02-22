@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import { Image } from 'react-native-elements';
 
 /**
  * Goods.js
@@ -10,7 +11,7 @@ import { StyleSheet, Text, View, Image } from 'react-native';
  * props.reg_dm //등록날짜
  */
 
-let host = 'http://m.netpx.co.kr';
+let host = 'http://www.netpx.co.kr';
 
 class Product extends Component {
     render() {
@@ -18,7 +19,8 @@ class Product extends Component {
             <View style={styles.container}>
                 <Image
                     style={styles.thumbnail}
-                    source={{ url: host + '/images/goods_img/' + this.props.reg_dm + '/' + this.props.goods_no + '/' + this.props.goods_no + '_a_500.jpg' }}
+                    resizeMode='contain'
+                    source={{ uri: host + '/images/goods_img/' + this.props.reg_dm + '/' + this.props.goods_no + '/' + this.props.goods_no + '_a_500.jpg' }}
                 />
                 <Text style={styles.brandText}>{this.props.brand_nm}</Text>
                 <Text style={styles.nameText}>{this.props.goods_nm}</Text>
@@ -46,7 +48,6 @@ const styles = StyleSheet.create({
     thumbnail: {
         width: 150,
         height: 200,
-        resizeMode: 'contain',
         borderBottomWidth: 1,
         borderColor: '#ECECEC'
     },
