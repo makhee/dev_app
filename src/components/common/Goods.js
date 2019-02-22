@@ -47,14 +47,13 @@ const styles = StyleSheet.create({
     },
     thumbnail: {
         width: 150,
-        height: 200,
-        borderBottomWidth: 1,
-        borderColor: '#ECECEC'
+        height: 200
     },
     brandText: {
         flex:1,
         color: 'green',
         fontSize: 15,
+        fontWeight: 'bold'
     },
     nameText: {
         flex:2,
