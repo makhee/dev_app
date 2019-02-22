@@ -18,6 +18,7 @@ import SplashScreen from 'react-native-splash-screen';
 
 import MainHeader from './src/components/main/MainHeader';
 import MainView from './src/views/MainView';
+import NewArrivalView from './src/views/NewArrivalView';
 import RankingView from './src/views/RankingView';
 import SaleView from './src/views/SaleView';
 
@@ -62,7 +63,7 @@ export default class App extends React.Component {
           navigationState={this.state}
           renderScene={SceneMap({
             '0': HomeTab,
-            '1': NewTab,
+            '1': NewArrivalTab,
             '2': RankingTab,
             '3': SaleTab,
             '4': ReviewTab
@@ -83,8 +84,9 @@ const HomeTab = () => (
     <MainView />
   </View>
 );
-const NewTab = () => (
+const NewArrivalTab = () => (
   <View style={styles.container}>
+    <NewArrivalView />
   </View>
 );
 const RankingTab = () => (
